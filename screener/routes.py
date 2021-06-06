@@ -176,7 +176,7 @@ def screen():
     # writer.save()
     file_name = f'NIFTY {str(datetime.date.today())} TRENDING STOCKS.csv'
     exportList.to_csv(file_name, index=None)
-    return render_template('screen.html', exportList=exportList)
+    return render_template('index.html', exportList=exportList)
 
     return "<h1>DONE</h1>"
     # document = open(file_name, 'rb')
