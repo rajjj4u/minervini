@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if not exportList.empty %}
+    <div class="content-section table-responsive text-nowrap">
+        <legend class="border-bottom mb-4"><h4>Stock Screener - Minervia Rules</h4></legend>
+        <table class="table table-bordered table-striped table-hover display nowrap searchTable" style="width:100%">
+          <thead class="black white-text">
+            <tr>
+              <th scope="col">Stock</th>
+              <th scope="col">RS_Rating</th>
+              <th scope="col">Close</th>
+              <th scope="col">50 Day MA</th>
+              <th scope="col">150 Day Ma</th>
+              <th scope="col">200 Day MA</th>
+              <th scope="col">52 Week Low</th>
+              <th scope="col">52 Week High</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in exportList.iterrows() %}
+            <div id="requestSection_{{ idx }}">
+             <tr>
+              <td id="requestIDRow_{{ idx }}"><strong>{{row[1].get('Stock')}}</strong></td>
+              <td id="categoryIDRow_{{ idx }}">{{row[1].get('RS_Rating')}}</td>
+              <td id="appIDRow_{{ idx }}">{{row[1].get('Close')}}</td>
+              <td id="50dayRow_{{ idx }}">{{row[1].get('50 Day MA')}}</td>
+              <td id="150dayRow_{{ idx }}">{{row[1].get('150 Day Ma')}}</td>
+              <td id="200dayRow_{{ idx }}">{{row[1].get('200 Day MA')}}</td>
+              <td id="52WeekLRow_{{ idx }}">{{row[1].get('52 Week Low')}}</td>
+              <td id="52WeekHRow_{{ idx }}">{{row[1].get('52 week High')}}</td>
+            </tr>
+            {% endfor %}
+            </div>
+          </tbody>
+        </table>
+    </div>
+    {% endif %}
+{% endblock content %}
